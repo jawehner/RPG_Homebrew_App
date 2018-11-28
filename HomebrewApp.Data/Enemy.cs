@@ -13,6 +13,9 @@ namespace HomebrewApp.Data
         public int EnemyId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]
@@ -34,6 +37,6 @@ namespace HomebrewApp.Data
         public int HP { get; set; }
 
         [Required]
-        public int Initiative { get; set; }
+        public int Initiative { get; set; }  
     }
 }

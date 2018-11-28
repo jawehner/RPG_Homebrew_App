@@ -3,6 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using HomebrewApp.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -32,7 +33,7 @@ namespace HomeBrewApp.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Note>  Notes { get; set; }
+        public DbSet<Enemy> Enemies { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
