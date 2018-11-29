@@ -266,6 +266,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Enemy\Index.cshtml" />
+    <Content Include="Views\Enemy\Create.cshtml" />
+    <Content Include="Views\Enemy\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

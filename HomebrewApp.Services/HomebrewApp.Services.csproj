@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnemyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomebrewApp.Data\HomebrewApp.Data.csproj">
+      <Project>{b17436a5-f922-4a0e-9d6e-61962f057aff}</Project>
+      <Name>HomebrewApp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomebrewApp.Models\HomebrewApp.Models.csproj">
+      <Project>{fb42182b-3c6f-4d4e-83c8-997c7b3b8f70}</Project>
+      <Name>HomebrewApp.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
