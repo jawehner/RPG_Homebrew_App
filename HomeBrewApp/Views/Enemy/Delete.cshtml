@@ -1,0 +1,96 @@
+﻿@model HomebrewApp.Models.EnemyDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EnemyDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EnemyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnemyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KineticAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KineticAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnergyAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnergyAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fortitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fortitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reflex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reflex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Will)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Will)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Initiative)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Initiative)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

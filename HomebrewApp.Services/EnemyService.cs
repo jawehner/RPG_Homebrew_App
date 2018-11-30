@@ -73,6 +73,7 @@ namespace HomebrewApp.Services
                 return
                     new EnemyDetail
                     {
+                        EnemyId = entity.EnemyId,
                         Name = entity.Name,
                         KineticAC = entity.KineticAC,
                         EnergyAC = entity.EnergyAC,
@@ -85,5 +86,42 @@ namespace HomebrewApp.Services
             }
         }
 
+        public bool UpdateEnemy(EnemyEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Enemies
+                    .Single(e => e.EnemyId == model.EnemyId && e.OwnerId == _userId);
+
+                        entity.Name = model.Name;
+                        entity.KineticAC = model.KineticAC;
+                        entity.EnergyAC = model.EnergyAC;
+                        entity.Fortitude = model.Fortitude;
+                        entity.Reflex = model.Reflex;
+                        entity.Will = model.Will;
+                        entity.HP = model.HP;
+                        entity.Initiative = model.Initiative;
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+        public bool DeleteEnemy(int enemyId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Enemies
+                        .Single(e => e.EnemyId == enemyId && e.OwnerId == _userId);
+
+                ctx.Enemies.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
