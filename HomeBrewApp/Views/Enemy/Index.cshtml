@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<HomebrewApp.Models.EnemyListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Enemies";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Enemy", "Create")
 </p>
 
 @if (TempData.ContainsKey("SaveResult"))
@@ -38,7 +38,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.EnemyId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.EnemyId }) |
+                @Html.ActionLink("Stats", "Stats", new { id = item.EnemyId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.EnemyId })
             </td>
         </tr>

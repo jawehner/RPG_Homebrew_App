@@ -59,10 +59,17 @@
     <Compile Include="EnemyEdit.cs" />
     <Compile Include="EnemyListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomebrewApp.Data\HomebrewApp.Data.csproj">
+      <Project>{B17436A5-F922-4A0E-9D6E-61962F057AFF}</Project>
+      <Name>HomebrewApp.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
