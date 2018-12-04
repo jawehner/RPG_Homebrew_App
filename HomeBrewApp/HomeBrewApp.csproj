@@ -276,10 +276,11 @@
     <Content Include="Views\Setting\Details.cshtml" />
     <Content Include="Views\Setting\Edit.cshtml" />
     <Content Include="Views\Setting\Delete.cshtml" />
+    <Content Include="Views\Session\Index.cshtml" />
+    <Content Include="Views\Session\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Session\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

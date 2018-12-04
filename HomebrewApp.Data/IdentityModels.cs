@@ -34,6 +34,8 @@ namespace HomeBrewApp.Data
         }
 
         public DbSet<Enemy> Enemies { get; set; } 
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Session> Sessions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

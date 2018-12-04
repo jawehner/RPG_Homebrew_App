@@ -43,7 +43,7 @@ namespace HomebrewApp.Services
                 var query =
                     ctx
                     .Settings
-                    .Where(e=> e.OwnderId == _userId)
+                    .Where(e=> e.OwnerId == _userId)
                     .Select(
                         e =>
                         new SettingListItem
@@ -59,7 +59,7 @@ namespace HomebrewApp.Services
             }
         }
 
-        public SettingDetail GetSettingById(int id)
+        public SettingDetail GetSettingById(int settingId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -85,7 +85,7 @@ namespace HomebrewApp.Services
                 var entity =
                     ctx
                         .Settings
-                        .Sinle(e = e.SettingId == model.SettingId && e.OwnerId == _userId);
+                        .Single(e => e.SettingId == model.SettingId && e.OwnerId == _userId);
 
                 entity.Name = model.Name;
                 entity.Type = model.Type;

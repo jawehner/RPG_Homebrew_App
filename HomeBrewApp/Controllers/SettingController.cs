@@ -65,6 +65,8 @@ namespace HomeBrewApp.Controllers
                     Name = detail.Name,
                     Type = detail.Type
                 };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -123,5 +125,11 @@ namespace HomeBrewApp.Controllers
         }
 
         //Call enemyservice?...
+        private EnemyService CreateEnemyService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new EnemyService(userId);
+            return service;
+        }
     }
 }

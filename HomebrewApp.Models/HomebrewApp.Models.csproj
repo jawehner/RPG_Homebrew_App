@@ -59,6 +59,8 @@
     <Compile Include="EnemyEdit.cs" />
     <Compile Include="EnemyListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionCreate.cs" />
+    <Compile Include="SessionDetail.cs" />
     <Compile Include="SessionListItem.cs" />
     <Compile Include="SettingCreate.cs" />
     <Compile Include="SettingDetail.cs" />
