@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace HomebrewApp.Models
 {
-    public class SettingListItem
+    public class SettingCreate
     {
-        public int SettingId { get; set; }
-
         public string Name { get; set; }
 
         public string Type { get; set; }
-        
 
-        //
-        public List<Enemy> Enemies { get; set; }
+        public int EnemyId { get; set; }
+
+        public virtual ICollection<Enemy> Enemies { get; set; }
     }
 }

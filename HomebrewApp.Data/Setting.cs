@@ -13,11 +13,15 @@ namespace HomebrewApp.Data
         public int SettingId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]
         public string Type { get; set; }
 
-        public Enemy Enemy{ get; set; }
+        [Required]
+        public virtual ICollection<Enemy> Enemy { get; set; }
     }
 }

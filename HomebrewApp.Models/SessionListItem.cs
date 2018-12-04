@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomebrewApp.Data
+namespace HomebrewApp.Models
 {
-    public class Session
+    public class SessionListItem
     {
         public int SessionId { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        public Setting Setting { get; set; }
-        public Enemy Enemy { get; set; }
-        public string Notes { get; set; }
+
     }
 }
