@@ -273,6 +273,9 @@
     <Content Include="Views\Enemy\Edit.cshtml" />
     <Content Include="Views\Enemy\Delete.cshtml" />
     <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\Setting\Details.cshtml" />
+    <Content Include="Views\Setting\Edit.cshtml" />
+    <Content Include="Views\Setting\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

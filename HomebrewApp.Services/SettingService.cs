@@ -58,5 +58,57 @@ namespace HomebrewApp.Services
                 return query.ToArray();
             }
         }
+
+        public SettingDetail GetSettingById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Settings
+                    .Single(e => e.SettingId == settingId && e.OwnerId == _userId);
+                return
+                    new SettingDetail
+                    {
+                        SettingId = entity.SettingId,
+                        Name = entity.Name,
+                        Type = entity.Type,
+                        //Enemy = entity.Enemy -- What do?!?!
+                    };
+            }
+        }
+
+        public bool UpdateSetting(SettingEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Settings
+                        .Sinle(e = e.SettingId == model.SettingId && e.OwnerId == _userId);
+
+                entity.Name = model.Name;
+                entity.Type = model.Type;
+                // entity.Enemy = model.Enemy;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteSetting(int settingId)
+        {
+
+            using (var ctx = new ApplicationDbContext())
+            {
+
+                var entity =
+                    ctx
+                        .Settings
+                        .Single(e => e.SettingId == settingId && e.OwnerId == _userId);
+                ctx.Settings.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
