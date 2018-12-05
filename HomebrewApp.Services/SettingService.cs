@@ -25,7 +25,8 @@ namespace HomebrewApp.Services
                 {
                     OwnerId = _userId,
                     Name = model.Name,
-                    Type = model.Type
+                    Type = model.Type,
+                    EnemyId = model.EnemyId,
                     //Enemy = model.Enemy
                 };
 
@@ -43,7 +44,7 @@ namespace HomebrewApp.Services
                 var query =
                     ctx
                     .Settings
-                    .Where(e=> e.OwnerId == _userId)
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
                         new SettingListItem
@@ -51,7 +52,7 @@ namespace HomebrewApp.Services
                             SettingId = e.SettingId,
                             Name = e.Name,
                             Type = e.Type,
-                            //Enemy?
+                            EnemyId = e.EnemyId
                         }
 
                      );
@@ -73,7 +74,7 @@ namespace HomebrewApp.Services
                         SettingId = entity.SettingId,
                         Name = entity.Name,
                         Type = entity.Type,
-                        //Enemy = entity.Enemy -- What do?!?!
+                        EnemyId = entity.EnemyId
                     };
             }
         }
@@ -89,7 +90,7 @@ namespace HomebrewApp.Services
 
                 entity.Name = model.Name;
                 entity.Type = model.Type;
-                // entity.Enemy = model.Enemy;
+                entity.EnemyId = model.EnemyId;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -109,6 +110,14 @@ namespace HomebrewApp.Services
 
                 return ctx.SaveChanges() == 1;
             }
+        }
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+        public ICollection<Enemy> GetEnemies()
+        {
+            using (var ctx = new ApplicationDbContext());
+
+            return db.Enemies.ToList();
         }
     }
 }

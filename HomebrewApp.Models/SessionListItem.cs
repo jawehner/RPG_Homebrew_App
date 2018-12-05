@@ -10,13 +10,15 @@ namespace HomebrewApp.Models
 {
     public class SessionListItem
     {
+        [Key]
         public int SessionId { get; set; }
         public string Name { get; set; }
 
         [Display(Name="Date of session")]
         public DateTime Date { get; set; }
         public ICollection<Setting> Setting { get; set; }
-        public ICollection<Enemy> Enemy { get; set; }
+        public int EnemyId { get; set; }
+        public Enemy Enemy { get; set; }
         public string Notes { get; set; }
 
     }

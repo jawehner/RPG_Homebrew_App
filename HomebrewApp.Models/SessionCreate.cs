@@ -12,7 +12,8 @@ namespace HomebrewApp.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public ICollection<Setting> Setting { get; set; }
-        public ICollection<Enemy> Enemy { get; set; }
+        public int EnemyId { get; set; }
+        public Enemy Enemy { get; set; }
         public string Notes { get; set; }
     }
 }

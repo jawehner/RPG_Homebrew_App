@@ -24,6 +24,11 @@ namespace HomeBrewApp.Controllers
 
         public ActionResult Create()
         {
+            var service = CreateSettingService();
+            var EnemyList = new SelectList(service.GetEnemies(), "EnemyId", "Name");
+
+            ViewBag.EnemyId = EnemyList;
+
             return View();
         }
 
@@ -37,7 +42,7 @@ namespace HomeBrewApp.Controllers
 
             if (service.CreateSetting(model))
             {
-                TempData["SaveResult"] = "Setting created.";
+                TempData["SaveResult"] = "Setting Created.";
                 return RedirectToAction("Index");
             };
 

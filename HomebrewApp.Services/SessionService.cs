@@ -18,16 +18,16 @@ namespace HomebrewApp.Services
             _userId = userId;
         }
 
-        public bool CreateSession(SessionService model)
+        public bool CreateSession(SessionCreate model)
         {
             var entity =
                 new Session()
                 {
                     OwnerId = _userId,
                     Name = model.Name,
-                    DateTime = model.DateTime,
+                    Date = model.Date,
+                    Setting = model.Setting,
                     Enemy = model.Enemy,
-                    Session = model.Session,
                     Notes = model.Notes
                 };
             using (var ctx = new ApplicationDbContext())
@@ -44,18 +44,77 @@ namespace HomebrewApp.Services
                 var query = 
                     ctx
                         .Sessions
-                        .Where (e => e.OwnerId == _userId)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new SessionListItem
                                 {
-                                    SessionId = e.NoteId,
-                                    Name = e.Name
-                                    //will fill out rest when I know what to do here
+                                    SessionId = e.SessionId,
+                                    Name = e.Name,
+                                    Date = e.Date,
+                                    Enemy = e.Enemy,
+                                    Setting = e.Setting,
+                                    Notes = e.Notes
+                                    //not sure if this is right
                                 }
                             
                             );
                 return query.ToArray();
+            }
+        }
+
+        public SessionDetail GetSessionById(int sessionId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Sessions
+                        .Single(e => e.SessionId == sessionId && e.OwnerId == _userId);
+                return
+                new SessionDetail
+                {
+                    SessionId = entity.SessionId,
+                    Name = entity.Name,
+                    Date = entity.Date,
+                    Setting = entity.Setting,
+                    Enemy = entity.Enemy,
+                    Notes = entity.Notes
+                };
+            }
+        }
+
+        public bool UpdateSession(SessionEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Sessions
+                        .Single(e => e.SessionId == model.SessionId && e.OwnerId == _userId);
+
+                entity.Name = model.Name;
+                entity.Date = model.Date;
+                entity.Setting = model.Setting;
+                entity.EnemyId = model.EnemyId;
+                entity.Notes = model.Notes;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteSession(int sessionId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Sessions
+                    .Single(e => e.SessionId == sessionId && e.OwnerId == _userId);
+
+                ctx.Sessions.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

@@ -64,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HomebrewApp.Contracts\HomebrewApp.Contracts.csproj">
+      <Project>{3274567b-644b-4d4b-9d3c-a956da8bc20b}</Project>
+      <Name>HomebrewApp.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomebrewApp.Data\HomebrewApp.Data.csproj">
       <Project>{b17436a5-f922-4a0e-9d6e-61962f057aff}</Project>
       <Name>HomebrewApp.Data</Name>

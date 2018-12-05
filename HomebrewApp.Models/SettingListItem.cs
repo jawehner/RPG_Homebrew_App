@@ -14,8 +14,8 @@ namespace HomebrewApp.Models
         public string Name { get; set; }
 
         public string Type { get; set; }
-        
 
+        public int EnemyId { get; set; }
         //
         public List<Enemy> Enemies { get; set; }
     }
