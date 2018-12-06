@@ -16,7 +16,8 @@ namespace HomebrewApp.Models
 
         [Display(Name="Date of session")]
         public DateTime Date { get; set; }
-        public ICollection<Setting> Setting { get; set; }
+        public Setting Setting { get; set; }
+        public int SettingId { get; set; }
         public int EnemyId { get; set; }
         public Enemy Enemy { get; set; }
         public string Notes { get; set; }

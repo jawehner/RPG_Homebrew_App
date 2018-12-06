@@ -29,9 +29,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
         <th></th>
     </tr>
 
@@ -46,9 +43,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.SessionId }) |

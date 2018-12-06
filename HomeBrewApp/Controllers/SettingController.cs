@@ -17,17 +17,18 @@ namespace HomeBrewApp.Controllers
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SettingService(userId);
-            var model = new SettingListItem[0];
+            var model = service.GetSettings();
 
             return View(model);
         }
 
         public ActionResult Create()
         {
-            var service = CreateSettingService();
-            var EnemyList = new SelectList(service.GetEnemies(), "EnemyId", "Name");
+            var service = CreateEnemyService();
+            var enemyList = new SelectList(service.GetEnemies(), "EnemyId", "Name");
 
-            ViewBag.EnemyId = EnemyList;
+            //ViewBag.EnemyId = enemyList;
+            ViewData["EnemyId"] = enemyList;
 
             return View();
         }
@@ -36,7 +37,7 @@ namespace HomeBrewApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SettingCreate model)
         {
-            if (ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
             var service = CreateSettingService();
 

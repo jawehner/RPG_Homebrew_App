@@ -56,14 +56,24 @@
   <ItemGroup>
     <Compile Include="Enemy.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\201812062120112_DamnYou.cs" />
+    <Compile Include="Migrations\201812062120112_DamnYou.Designer.cs">
+      <DependentUpon>201812062120112_DamnYou.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PlayField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reference.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Setting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812062120112_DamnYou.resx">
+      <DependentUpon>201812062120112_DamnYou.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

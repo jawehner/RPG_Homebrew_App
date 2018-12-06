@@ -26,8 +26,8 @@ namespace HomebrewApp.Services
                     OwnerId = _userId,
                     Name = model.Name,
                     Date = model.Date,
-                    Setting = model.Setting,
-                    Enemy = model.Enemy,
+                    SettingId = model.SettingId,
+                    EnemyId = model.EnemyId,
                     Notes = model.Notes
                 };
             using (var ctx = new ApplicationDbContext())
@@ -52,8 +52,8 @@ namespace HomebrewApp.Services
                                     SessionId = e.SessionId,
                                     Name = e.Name,
                                     Date = e.Date,
-                                    Enemy = e.Enemy,
-                                    Setting = e.Setting,
+                                    EnemyId = e.EnemyId,
+                                    SettingId = e.SettingId,
                                     Notes = e.Notes
                                     //not sure if this is right
                                 }
@@ -74,7 +74,7 @@ namespace HomebrewApp.Services
                 return
                 new SessionDetail
                 {
-                    SessionId = entity.SessionId,
+                    //SessionId = entity.SessionId, -- need this?
                     Name = entity.Name,
                     Date = entity.Date,
                     Setting = entity.Setting,
@@ -95,7 +95,7 @@ namespace HomebrewApp.Services
 
                 entity.Name = model.Name;
                 entity.Date = model.Date;
-                entity.Setting = model.Setting;
+                entity.SettingId = model.SettingId;
                 entity.EnemyId = model.EnemyId;
                 entity.Notes = model.Notes;
 
@@ -115,6 +115,28 @@ namespace HomebrewApp.Services
                 ctx.Sessions.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public IEnumerable<Enemy> GetEnemies()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var sessionEnemy =
+                    ctx.Enemies;
+
+                return sessionEnemy.ToArray();
+            }
+        }
+
+        public IEnumerable<Setting> GetSetting()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var sessionSetting =
+                    ctx.Settings;
+
+                return sessionSetting.ToArray();
             }
         }
     }

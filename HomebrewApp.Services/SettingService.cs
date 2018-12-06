@@ -27,7 +27,6 @@ namespace HomebrewApp.Services
                     Name = model.Name,
                     Type = model.Type,
                     EnemyId = model.EnemyId,
-                    //Enemy = model.Enemy
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -71,7 +70,7 @@ namespace HomebrewApp.Services
                 return
                     new SettingDetail
                     {
-                        SettingId = entity.SettingId,
+                        //SettingId = entity.SettingId,
                         Name = entity.Name,
                         Type = entity.Type,
                         EnemyId = entity.EnemyId
@@ -112,12 +111,16 @@ namespace HomebrewApp.Services
             }
         }
 
-        private ApplicationDbContext db = new ApplicationDbContext();
-        public ICollection<Enemy> GetEnemies()
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        public IEnumerable<Enemy> GetEnemies()
         {
-            using (var ctx = new ApplicationDbContext());
+            using (var ctx = new ApplicationDbContext())
+            {
+                var settingEnemy =
+                    ctx.Enemies;
 
-            return db.Enemies.ToList();
+            return settingEnemy.ToArray();
+            }
         }
     }
 }

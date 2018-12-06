@@ -21,10 +21,9 @@ namespace HomebrewApp.Data
         [Required]
         public string Type { get; set; }
 
-        [Required]
+        
         public int EnemyId { get; set; }
 
-        [Required]
         public virtual Enemy Enemy { get; set; }
     }
 }

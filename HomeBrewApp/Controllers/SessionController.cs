@@ -17,13 +17,23 @@ namespace HomeBrewApp.Controllers
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SessionService(userId);
-            var model = new SessionListItem[0];
+            var model = service.GetSessions();
 
-            return View();
+            return View(model);
         }
 
         public ActionResult Create()
         {
+            var enemyService = CreateEnemyService();
+            var enemyList = new SelectList(enemyService.GetEnemies(), "EnemyId", "Name");
+
+            ViewData["EnemyId"] = enemyList;
+
+            var settingService = CreateSettingService();
+            var settingList = new SelectList(settingService.GetSettings(), "SettingId", "Name");
+
+            ViewData["SettingId"] = settingList;
+
             return View();
         }
 
@@ -64,7 +74,7 @@ namespace HomeBrewApp.Controllers
                     SessionId = detail.SessionId,
                     Name = detail.Name,
                     Date = detail.Date,
-                    Setting = detail.Setting,
+                    SettingId = detail.SettingId,
                     EnemyId = detail.EnemyId,
                     Notes = detail.Notes
                 };
@@ -123,6 +133,20 @@ namespace HomeBrewApp.Controllers
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SessionService(userId);
+            return service;
+        }
+
+        private EnemyService CreateEnemyService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new EnemyService(userId);
+            return service;
+        }
+
+        private SettingService CreateSettingService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SettingService(userId);
             return service;
         }
     }

@@ -14,7 +14,5 @@ namespace HomebrewApp.Models
         public string Type { get; set; }
 
         public int EnemyId { get; set; }
-
-        public virtual Enemy Enemies { get; set; }
     }
 }
