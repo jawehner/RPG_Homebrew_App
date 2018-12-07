@@ -64,12 +64,19 @@ namespace HomeBrewApp.Controllers
         {
             var service = CreateSettingService();
             var detail = service.GetSettingById(id);
+            var enemyService = CreateEnemyService();
+            var enemyList = new SelectList(enemyService.GetEnemies(), "EnemyId", "Name", detail.EnemyId);
+
+            //ViewBag.EnemyId = enemyList;
+            ViewData["EnemyId"] = enemyList;
+
             var model =
                 new SettingEdit
                 {
                     SettingId = detail.SettingId,
                     Name = detail.Name,
-                    Type = detail.Type
+                    Type = detail.Type,
+                    EnemyId = detail.EnemyId,
                 };
 
             return View(model);
@@ -79,6 +86,12 @@ namespace HomeBrewApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, SettingEdit model)
         {
+            var enemyService = CreateEnemyService();
+            var enemyList = new SelectList(enemyService.GetEnemies(), "EnemyId", "Name");
+
+            //ViewBag.EnemyId = enemyList;
+            ViewData["EnemyId"] = enemyList;
+
             if (!ModelState.IsValid) return View(model);
 
             if(model.SettingId != id)

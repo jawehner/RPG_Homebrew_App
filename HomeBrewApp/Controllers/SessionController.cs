@@ -24,11 +24,6 @@ namespace HomeBrewApp.Controllers
 
         public ActionResult Create()
         {
-            var enemyService = CreateEnemyService();
-            var enemyList = new SelectList(enemyService.GetEnemies(), "EnemyId", "Name");
-
-            ViewData["EnemyId"] = enemyList;
-
             var settingService = CreateSettingService();
             var settingList = new SelectList(settingService.GetSettings(), "SettingId", "Name");
 
@@ -68,14 +63,20 @@ namespace HomeBrewApp.Controllers
         {
             var service = CreateSessionService();
             var detail = service.GetSessionById(id);
+            var settingService = CreateSettingService();
+            var settingList = new SelectList(settingService.GetSettings(), "SettingId", "Name");
+
+            ViewData["SettingId"] = settingList;
+
             var model =
+
+
                 new SessionEdit
                 {
                     SessionId = detail.SessionId,
                     Name = detail.Name,
                     Date = detail.Date,
                     SettingId = detail.SettingId,
-                    EnemyId = detail.EnemyId,
                     Notes = detail.Notes
                 };
             return View(model);
@@ -85,6 +86,13 @@ namespace HomeBrewApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, SessionEdit model)
         {
+            var service = CreateSessionService();
+            var detail = service.GetSessionById(id);
+            var settingService = CreateSettingService();
+            var settingList = new SelectList(settingService.GetSettings(), "SettingId", "Name", detail.SettingId);
+
+            ViewData["SettingId"] = settingList;
+
             if (!ModelState.IsValid) return View(model);
 
             if(model.SessionId != id)
@@ -94,7 +102,6 @@ namespace HomeBrewApp.Controllers
             }
 
 
-            var service = CreateSessionService();
 
             if (service.UpdateSession(model))
             {
@@ -133,13 +140,6 @@ namespace HomeBrewApp.Controllers
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new SessionService(userId);
-            return service;
-        }
-
-        private EnemyService CreateEnemyService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new EnemyService(userId);
             return service;
         }
 

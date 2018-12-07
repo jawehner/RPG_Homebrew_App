@@ -56,12 +56,15 @@
   <ItemGroup>
     <Compile Include="Enemy.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201812062120112_DamnYou.cs" />
-    <Compile Include="Migrations\201812062120112_DamnYou.Designer.cs">
-      <DependentUpon>201812062120112_DamnYou.cs</DependentUpon>
+    <Compile Include="Migrations\201812071544451_FridayMigration.cs" />
+    <Compile Include="Migrations\201812071544451_FridayMigration.Designer.cs">
+      <DependentUpon>201812071544451_FridayMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812071939490_AddedVirtual.cs" />
+    <Compile Include="Migrations\201812071939490_AddedVirtual.Designer.cs">
+      <DependentUpon>201812071939490_AddedVirtual.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PlayField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="Setting.cs" />
@@ -71,8 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812062120112_DamnYou.resx">
-      <DependentUpon>201812062120112_DamnYou.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812071544451_FridayMigration.resx">
+      <DependentUpon>201812071544451_FridayMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812071939490_AddedVirtual.resx">
+      <DependentUpon>201812071939490_AddedVirtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

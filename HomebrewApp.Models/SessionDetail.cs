@@ -14,10 +14,8 @@ namespace HomebrewApp.Models
         public int SessionId { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
-        public Setting Setting { get; set; }
         public int SettingId { get; set; }
-        public int EnemyId { get; set; }
-        public Enemy Enemy { get; set; }
+        public string SettingName { get; set; }
         public string Notes { get; set; }
     }
 }

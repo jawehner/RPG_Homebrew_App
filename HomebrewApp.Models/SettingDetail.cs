@@ -14,6 +14,7 @@ namespace HomebrewApp.Models
         public string Type { get; set; }
         public int MyProperty { get; set; }
         public int EnemyId { get; set; }
+        public string EnemyName { get; set; }
         public virtual ICollection<Enemy> Enemy { get; set; }
     }
 }

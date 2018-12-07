@@ -70,10 +70,11 @@ namespace HomebrewApp.Services
                 return
                     new SettingDetail
                     {
-                        //SettingId = entity.SettingId,
+                        SettingId = entity.SettingId,
                         Name = entity.Name,
                         Type = entity.Type,
-                        EnemyId = entity.EnemyId
+                        EnemyId = entity.EnemyId,
+                        EnemyName = entity.Enemy.Name
                     };
             }
         }

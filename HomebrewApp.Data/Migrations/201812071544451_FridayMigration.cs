@@ -3,7 +3,7 @@ namespace HomebrewApp.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DamnYou : DbMigration
+    public partial class FridayMigration : DbMigration
     {
         public override void Up()
         {
@@ -57,14 +57,11 @@ namespace HomebrewApp.Data.Migrations
                         Name = c.String(),
                         Date = c.DateTime(nullable: false),
                         SettingId = c.Int(nullable: false),
-                        EnemyId = c.Int(nullable: false),
                         Notes = c.String(),
                     })
                 .PrimaryKey(t => t.SessionId)
-                .ForeignKey("dbo.Enemy", t => t.EnemyId, cascadeDelete: true)
                 .ForeignKey("dbo.Setting", t => t.SettingId, cascadeDelete: true)
-                .Index(t => t.SettingId)
-                .Index(t => t.EnemyId);
+                .Index(t => t.SettingId);
             
             CreateTable(
                 "dbo.Setting",
@@ -135,12 +132,10 @@ namespace HomebrewApp.Data.Migrations
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.Session", "SettingId", "dbo.Setting");
             DropForeignKey("dbo.Setting", "EnemyId", "dbo.Enemy");
-            DropForeignKey("dbo.Session", "EnemyId", "dbo.Enemy");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.Setting", new[] { "EnemyId" });
-            DropIndex("dbo.Session", new[] { "EnemyId" });
             DropIndex("dbo.Session", new[] { "SettingId" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });

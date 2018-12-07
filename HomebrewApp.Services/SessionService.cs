@@ -27,7 +27,6 @@ namespace HomebrewApp.Services
                     Name = model.Name,
                     Date = model.Date,
                     SettingId = model.SettingId,
-                    EnemyId = model.EnemyId,
                     Notes = model.Notes
                 };
             using (var ctx = new ApplicationDbContext())
@@ -52,7 +51,6 @@ namespace HomebrewApp.Services
                                     SessionId = e.SessionId,
                                     Name = e.Name,
                                     Date = e.Date,
-                                    EnemyId = e.EnemyId,
                                     SettingId = e.SettingId,
                                     Notes = e.Notes
                                     //not sure if this is right
@@ -74,11 +72,11 @@ namespace HomebrewApp.Services
                 return
                 new SessionDetail
                 {
-                    //SessionId = entity.SessionId, -- need this?
+                    SessionId = entity.SessionId,
                     Name = entity.Name,
                     Date = entity.Date,
-                    Setting = entity.Setting,
-                    Enemy = entity.Enemy,
+                    SettingId = entity.SettingId,
+                    SettingName = entity.Setting.Name,
                     Notes = entity.Notes
                 };
             }
@@ -96,7 +94,6 @@ namespace HomebrewApp.Services
                 entity.Name = model.Name;
                 entity.Date = model.Date;
                 entity.SettingId = model.SettingId;
-                entity.EnemyId = model.EnemyId;
                 entity.Notes = model.Notes;
 
                 return ctx.SaveChanges() == 1;
@@ -115,17 +112,6 @@ namespace HomebrewApp.Services
                 ctx.Sessions.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
-            }
-        }
-
-        public IEnumerable<Enemy> GetEnemies()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var sessionEnemy =
-                    ctx.Enemies;
-
-                return sessionEnemy.ToArray();
             }
         }
 

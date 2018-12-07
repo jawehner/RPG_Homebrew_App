@@ -13,8 +13,6 @@ namespace HomebrewApp.Models
         public DateTime Date { get; set; }
         public Setting Setting { get; set; }
         public int SettingId { get; set; }
-        public int EnemyId { get; set; }
-        public Enemy Enemy { get; set; }
         public string Notes { get; set; }
     }
 }

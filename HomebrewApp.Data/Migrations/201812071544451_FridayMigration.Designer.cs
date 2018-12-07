@@ -7,13 +7,13 @@ namespace HomebrewApp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class DamnYou : IMigrationMetadata
+    public sealed partial class FridayMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DamnYou));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FridayMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812062120112_DamnYou"; }
+            get { return "201812071544451_FridayMigration"; }
         }
         
         string IMigrationMetadata.Source
