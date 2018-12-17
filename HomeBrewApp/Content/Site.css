@@ -28,14 +28,25 @@ textarea {
 
 h2 {
     font-family: Impact;
-    color: #B6A242;
-    font-size: xx-large
+    color: #C64339;
+    font-size: 4em
 }
 
 .table {
     font-family: 'anton' sans-serif;
+   
 }
 
 .jumbotron {
-    font-family: 'Agency FB';
+    font-family: Impact;
+    background-color: rgba(231, 249, 239, .5);
+    font-size: 1em;
+    color: #000000;
+    border-radius: 20%;
+}
+
+.footer {
+    font-family: Impact;
+    color: #9D4B2A;
+    font-size: 2em;
 }

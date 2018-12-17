@@ -9,7 +9,7 @@
 <div>
     
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal jumbotron">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -76,7 +76,7 @@
 
     </dl>
 </div>
-<p>
+<p class="footer">
     @Html.ActionLink("Edit", "Edit", new {  id = Model.EnemyId  }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

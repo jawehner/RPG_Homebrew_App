@@ -7,17 +7,17 @@
 <h2>Enemies</h2>
 
 <p>
-    @Html.ActionLink("Create New Enemy", "Create")
+    @Html.ActionLink("Create New Enemy", "Create", "", new { @class = "btn-lg btn-primary" })
 </p>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
-    <div class="alert alert-success fade in" role="alert">
+    @*<div class="alert alert-success fade in" role="alert">
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
         </button>
         @TempData["SaveResult"]
-    </div>
+    </div>*@
 }
 <div class="jumbotron">
     <table class="table">
@@ -37,9 +37,9 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.EnemyId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.EnemyId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EnemyId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EnemyId }, new { @class = "btn-lg btn-warning" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.EnemyId }, new { @class = "btn-lg btn-primary" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EnemyId }, new { @class = "btn-lg btn-danger" })
                 </td>
             </tr>
         }

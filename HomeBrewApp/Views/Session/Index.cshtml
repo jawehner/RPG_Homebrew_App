@@ -7,38 +7,42 @@
 <h2>Sessions</h2>
 
 <p>
-    @Html.ActionLink("Create New Session", "Create")
+    @Html.ActionLink("Create New Session", "Create", "", new { @class = "btn-lg btn-primary" })
 </p>
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-        @ViewBag.SaveResult
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-    </div>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
 
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+<div class="jumbotron">
+    
+    @if (TempData.ContainsKey("SaveResult"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.SessionId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.SessionId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.SessionId })
-            </td>
-        </tr>
+        @*<div class="alert alert-success fade in" role="alert">
+            @ViewBag.SaveResult
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>*@
     }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
 
-</table>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SessionId }, new { @class = "btn-lg btn-warning" })
+                    @Html.ActionLink("Details", "Details", new { id = item.SessionId }, new { @class = "btn-lg btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SessionId }, new { @class = "btn-lg btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
