@@ -13,6 +13,11 @@ using HomeBrewApp.Data;
 
 namespace HomeBrewApp.Controllers
 {
+
+    #if !DEBUG
+        [RequireHttps]
+
+    #endif
     [Authorize]
     public class AccountController : Controller
     {
